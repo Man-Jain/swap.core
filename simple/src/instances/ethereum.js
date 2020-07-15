@@ -9,7 +9,7 @@ const TESTNET_PROVIDER = `https://rinkeby.infura.io/JCnK5ifEPH9qcQkX0Ahl`
 
 const MAINNET_PROVIDER = process.env.WEB3_MAINNET_PROVIDER || `https://geth.swaponline.site`
 // const TESTNET_PROVIDER = process.env.WEB3_TESTNET_PROVIDER || `https://tgeth.swaponline.site`
-const LOCAL_PROVIDER = process.env.WEB3_LOCAL_PROVIDER || `http://localhost:7545`
+const LOCAL_PROVIDER = process.env.WEB3_LOCAL_PROVIDER || `http://0.0.0.0:7545`
 
 const WEB3_PROVIDERS = {
   mainnet: new Web3.providers.HttpProvider(MAINNET_PROVIDER),

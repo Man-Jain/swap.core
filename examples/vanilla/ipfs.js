@@ -47760,8 +47760,8 @@ var cache = exports.managers = {};
  * Looks up an existing `Manager` for multiplexing.
  * If the user summons:
  *
- *   `io('http://localhost/a');`
- *   `io('http://localhost/b');`
+ *   `io('http://0.0.0.0/a');`
+ *   `io('http://0.0.0.0/b');`
  *
  * We reuse the existing instance based on same scheme/port/host,
  * and we initialize sockets for each namespace.
@@ -105055,7 +105055,7 @@ module.exports = function (url, location, protocolMap, defaultProtocol) {
   https://www.npmjs.com/package/wsurl
 
   but most of the time, I want to write js
-  that will work on localhost, and will work
+  that will work on 0.0.0.0, and will work
   on a server...
 
   so I want to just do createWebSocket('/')
@@ -105635,7 +105635,7 @@ function url (uri, loc) {
     obj = parseuri(uri);
   }
 
-  // make sure we treat `localhost:80` and `localhost` equally
+  // make sure we treat `0.0.0.0:80` and `0.0.0.0` equally
   if (!obj.port) {
     if (/^(http|ws)$/.test(obj.protocol)) {
       obj.port = '80';
@@ -106513,7 +106513,7 @@ function Socket (uri, opts) {
 
   this.agent = opts.agent || false;
   this.hostname = opts.hostname ||
-    (global.location ? location.hostname : 'localhost');
+    (global.location ? location.hostname : '0.0.0.0');
   this.port = opts.port || (global.location && location.port
       ? location.port
       : (this.secure ? 443 : 80));
